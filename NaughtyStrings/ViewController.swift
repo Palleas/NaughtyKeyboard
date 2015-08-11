@@ -10,23 +10,17 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var descriptionContainer: UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let url = NSURL(string: "https://raw.githubusercontent.com/minimaxir/big-list-of-naughty-strings/master/blns.json")!
-        NSURLSession.sharedSession().dataTaskWithURL(url, completionHandler: { (data, response, error) -> Void in
-            var error: NSError?
-            let strings = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.allZeros, error: &error) as! [String]
-            println(strings)
-        }).resume()
-        
+        let path = NSBundle.mainBundle().pathForResource("explaination", ofType: "html")!
+        let data = NSData(contentsOfFile: path)!
+        let text = NSMutableAttributedString(data: data, options: [NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType], documentAttributes: nil, error: nil)!
+        text.setAttributes([NSFontAttributeName: UIFont.systemFontOfSize(20)], range: NSMakeRange(0, text.length))
+        descriptionContainer.attributedText = text
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
 
 }
 

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7A3E7AFC1B796BF40084CBF6 /* blns.json in Resources */ = {isa = PBXBuildFile; fileRef = 7A3E7AFB1B796BF40084CBF6 /* blns.json */; };
+		7A3E7B061B7A65C30084CBF6 /* explaination.html in Resources */ = {isa = PBXBuildFile; fileRef = 7A3E7B051B7A65C20084CBF6 /* explaination.html */; };
 		7A806BE41B79111F00D18F88 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A806BE31B79111F00D18F88 /* AppDelegate.swift */; };
 		7A806BE61B79111F00D18F88 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A806BE51B79111F00D18F88 /* ViewController.swift */; };
 		7A806BE91B79111F00D18F88 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A806BE71B79111F00D18F88 /* Main.storyboard */; };
@@ -51,6 +52,7 @@
 
 /* Begin PBXFileReference section */
 		7A3E7AFB1B796BF40084CBF6 /* blns.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = blns.json; sourceTree = "<group>"; };
+		7A3E7B051B7A65C20084CBF6 /* explaination.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = explaination.html; sourceTree = "<group>"; };
 		7A806BDE1B79111F00D18F88 /* NaughtyStrings.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NaughtyStrings.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A806BE21B79111F00D18F88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A806BE31B79111F00D18F88 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				7A806BEA1B79111F00D18F88 /* Images.xcassets */,
 				7A806BEC1B79111F00D18F88 /* LaunchScreen.xib */,
 				7A806BE11B79111F00D18F88 /* Supporting Files */,
+				7A3E7B051B7A65C20084CBF6 /* explaination.html */,
 			);
 			path = NaughtyStrings;
 			sourceTree = "<group>";
@@ -271,6 +274,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A806BE91B79111F00D18F88 /* Main.storyboard in Resources */,
+				7A3E7B061B7A65C30084CBF6 /* explaination.html in Resources */,
 				7A806BEE1B79111F00D18F88 /* LaunchScreen.xib in Resources */,
 				7A806BEB1B79111F00D18F88 /* Images.xcassets in Resources */,
 			);
