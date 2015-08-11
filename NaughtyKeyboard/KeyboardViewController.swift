@@ -17,16 +17,20 @@ class KeyboardViewController: UIInputViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.setTranslatesAutoresizingMaskIntoConstraints(false)
 
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "StringCell")
-        // TODO: autolayout that shit
-        tableView.frame = CGRect(origin: CGPointZero, size: CGSize(width: 375, height: 194))
         tableView.setTranslatesAutoresizingMaskIntoConstraints(false)
         tableView.delegate = self
         tableView.dataSource = self
-        self.view.addSubview(tableView)
+        view.addSubview(tableView)
         
+        let topConstraint = NSLayoutConstraint(item: tableView, attribute: .Top, relatedBy: .Equal, toItem: view, attribute: .Top, multiplier: 1.0, constant: 0)
+        let bottomConstraint = NSLayoutConstraint(item: tableView, attribute: .Bottom, relatedBy: .Equal, toItem: view, attribute: .Bottom, multiplier: 1.0, constant: 0)
+        let leftConstraint = NSLayoutConstraint(item: tableView, attribute: .Left, relatedBy: .Equal, toItem: view, attribute: .Left, multiplier: 1.0, constant: 0)
+        let rightConstraint = NSLayoutConstraint(item: tableView, attribute: .Right, relatedBy: .Equal, toItem: view, attribute: .Right, multiplier: 1.0, constant: 0)
+        view.addConstraints([topConstraint, leftConstraint, bottomConstraint, rightConstraint])
+        
+        // TODO: move this in container app instead of loading it every time the keyboard is used 😁
         let path = NSBundle(forClass: self.dynamicType).pathForResource("blns", ofType: "json")!
         strings = NSJSONSerialization.JSONObjectWithData(NSData(contentsOfFile: path)!, options: NSJSONReadingOptions.allZeros, error: nil) as! [String]
         tableView.reloadData()
@@ -36,9 +40,13 @@ class KeyboardViewController: UIInputViewController {
 extension KeyboardViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let string = strings[indexPath.row]
-        (textDocumentProxy as! UIKeyInput).insertText(string)
+        if let proxy  = textDocumentProxy as? UIKeyInput {
+            proxy.insertText(string)
+            proxy.insertText("\n")
+        }
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
-    
+
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("StringCell", forIndexPath: indexPath) as! UITableViewCell
         cell.textLabel?.text = strings[indexPath.row]
@@ -47,7 +55,6 @@ extension KeyboardViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        println("Asking for strings count: \(strings.count)")
         return strings.count
     }
 }
