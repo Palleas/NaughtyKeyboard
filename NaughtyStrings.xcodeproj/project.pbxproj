@@ -1,0 +1,558 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7A3E7AFC1B796BF40084CBF6 /* blns.json in Resources */ = {isa = PBXBuildFile; fileRef = 7A3E7AFB1B796BF40084CBF6 /* blns.json */; };
+		7A806BE41B79111F00D18F88 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A806BE31B79111F00D18F88 /* AppDelegate.swift */; };
+		7A806BE61B79111F00D18F88 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A806BE51B79111F00D18F88 /* ViewController.swift */; };
+		7A806BE91B79111F00D18F88 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A806BE71B79111F00D18F88 /* Main.storyboard */; };
+		7A806BEB1B79111F00D18F88 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A806BEA1B79111F00D18F88 /* Images.xcassets */; };
+		7A806BEE1B79111F00D18F88 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A806BEC1B79111F00D18F88 /* LaunchScreen.xib */; };
+		7A806BFA1B79111F00D18F88 /* NaughtyStringsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A806BF91B79111F00D18F88 /* NaughtyStringsTests.swift */; };
+		7A806C0C1B7912B400D18F88 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A806C0B1B7912B400D18F88 /* KeyboardViewController.swift */; };
+		7A806C0F1B7912B400D18F88 /* NaughtyKeyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 7A806C071B7912B400D18F88 /* NaughtyKeyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7A806BF41B79111F00D18F88 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7A806BD61B79111F00D18F88 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7A806BDD1B79111F00D18F88;
+			remoteInfo = NaughtyStrings;
+		};
+		7A806C0D1B7912B400D18F88 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7A806BD61B79111F00D18F88 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7A806C061B7912B400D18F88;
+			remoteInfo = NaughtyKeyboard;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		7A806C131B7912B500D18F88 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				7A806C0F1B7912B400D18F88 /* NaughtyKeyboard.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		7A3E7AFB1B796BF40084CBF6 /* blns.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = blns.json; sourceTree = "<group>"; };
+		7A806BDE1B79111F00D18F88 /* NaughtyStrings.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NaughtyStrings.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A806BE21B79111F00D18F88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7A806BE31B79111F00D18F88 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		7A806BE51B79111F00D18F88 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7A806BE81B79111F00D18F88 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		7A806BEA1B79111F00D18F88 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		7A806BED1B79111F00D18F88 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		7A806BF31B79111F00D18F88 /* NaughtyStringsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NaughtyStringsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A806BF81B79111F00D18F88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7A806BF91B79111F00D18F88 /* NaughtyStringsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaughtyStringsTests.swift; sourceTree = "<group>"; };
+		7A806C071B7912B400D18F88 /* NaughtyKeyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NaughtyKeyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A806C0A1B7912B400D18F88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7A806C0B1B7912B400D18F88 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7A806BDB1B79111F00D18F88 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A806BF01B79111F00D18F88 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A806C041B7912B400D18F88 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7A806BD51B79111F00D18F88 = {
+			isa = PBXGroup;
+			children = (
+				7A806BE01B79111F00D18F88 /* NaughtyStrings */,
+				7A806BF61B79111F00D18F88 /* NaughtyStringsTests */,
+				7A806C081B7912B400D18F88 /* NaughtyKeyboard */,
+				7A806BDF1B79111F00D18F88 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7A806BDF1B79111F00D18F88 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7A806BDE1B79111F00D18F88 /* NaughtyStrings.app */,
+				7A806BF31B79111F00D18F88 /* NaughtyStringsTests.xctest */,
+				7A806C071B7912B400D18F88 /* NaughtyKeyboard.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7A806BE01B79111F00D18F88 /* NaughtyStrings */ = {
+			isa = PBXGroup;
+			children = (
+				7A806BE31B79111F00D18F88 /* AppDelegate.swift */,
+				7A806BE51B79111F00D18F88 /* ViewController.swift */,
+				7A806BE71B79111F00D18F88 /* Main.storyboard */,
+				7A806BEA1B79111F00D18F88 /* Images.xcassets */,
+				7A806BEC1B79111F00D18F88 /* LaunchScreen.xib */,
+				7A806BE11B79111F00D18F88 /* Supporting Files */,
+			);
+			path = NaughtyStrings;
+			sourceTree = "<group>";
+		};
+		7A806BE11B79111F00D18F88 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7A806BE21B79111F00D18F88 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7A806BF61B79111F00D18F88 /* NaughtyStringsTests */ = {
+			isa = PBXGroup;
+			children = (
+				7A806BF91B79111F00D18F88 /* NaughtyStringsTests.swift */,
+				7A806BF71B79111F00D18F88 /* Supporting Files */,
+			);
+			path = NaughtyStringsTests;
+			sourceTree = "<group>";
+		};
+		7A806BF71B79111F00D18F88 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7A806BF81B79111F00D18F88 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7A806C081B7912B400D18F88 /* NaughtyKeyboard */ = {
+			isa = PBXGroup;
+			children = (
+				7A3E7AFB1B796BF40084CBF6 /* blns.json */,
+				7A806C0B1B7912B400D18F88 /* KeyboardViewController.swift */,
+				7A806C091B7912B400D18F88 /* Supporting Files */,
+			);
+			path = NaughtyKeyboard;
+			sourceTree = "<group>";
+		};
+		7A806C091B7912B400D18F88 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7A806C0A1B7912B400D18F88 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7A806BDD1B79111F00D18F88 /* NaughtyStrings */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A806BFD1B79111F00D18F88 /* Build configuration list for PBXNativeTarget "NaughtyStrings" */;
+			buildPhases = (
+				7A806BDA1B79111F00D18F88 /* Sources */,
+				7A806BDB1B79111F00D18F88 /* Frameworks */,
+				7A806BDC1B79111F00D18F88 /* Resources */,
+				7A806C131B7912B500D18F88 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7A806C0E1B7912B400D18F88 /* PBXTargetDependency */,
+			);
+			name = NaughtyStrings;
+			productName = NaughtyStrings;
+			productReference = 7A806BDE1B79111F00D18F88 /* NaughtyStrings.app */;
+			productType = "com.apple.product-type.application";
+		};
+		7A806BF21B79111F00D18F88 /* NaughtyStringsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A806C001B79111F00D18F88 /* Build configuration list for PBXNativeTarget "NaughtyStringsTests" */;
+			buildPhases = (
+				7A806BEF1B79111F00D18F88 /* Sources */,
+				7A806BF01B79111F00D18F88 /* Frameworks */,
+				7A806BF11B79111F00D18F88 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7A806BF51B79111F00D18F88 /* PBXTargetDependency */,
+			);
+			name = NaughtyStringsTests;
+			productName = NaughtyStringsTests;
+			productReference = 7A806BF31B79111F00D18F88 /* NaughtyStringsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		7A806C061B7912B400D18F88 /* NaughtyKeyboard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A806C101B7912B500D18F88 /* Build configuration list for PBXNativeTarget "NaughtyKeyboard" */;
+			buildPhases = (
+				7A806C031B7912B400D18F88 /* Sources */,
+				7A806C041B7912B400D18F88 /* Frameworks */,
+				7A806C051B7912B400D18F88 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NaughtyKeyboard;
+			productName = NaughtyKeyboard;
+			productReference = 7A806C071B7912B400D18F88 /* NaughtyKeyboard.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7A806BD61B79111F00D18F88 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0640;
+				ORGANIZATIONNAME = "Perfectly-Cooked";
+				TargetAttributes = {
+					7A806BDD1B79111F00D18F88 = {
+						CreatedOnToolsVersion = 6.4;
+					};
+					7A806BF21B79111F00D18F88 = {
+						CreatedOnToolsVersion = 6.4;
+						TestTargetID = 7A806BDD1B79111F00D18F88;
+					};
+					7A806C061B7912B400D18F88 = {
+						CreatedOnToolsVersion = 6.4;
+					};
+				};
+			};
+			buildConfigurationList = 7A806BD91B79111F00D18F88 /* Build configuration list for PBXProject "NaughtyStrings" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7A806BD51B79111F00D18F88;
+			productRefGroup = 7A806BDF1B79111F00D18F88 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7A806BDD1B79111F00D18F88 /* NaughtyStrings */,
+				7A806BF21B79111F00D18F88 /* NaughtyStringsTests */,
+				7A806C061B7912B400D18F88 /* NaughtyKeyboard */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7A806BDC1B79111F00D18F88 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A806BE91B79111F00D18F88 /* Main.storyboard in Resources */,
+				7A806BEE1B79111F00D18F88 /* LaunchScreen.xib in Resources */,
+				7A806BEB1B79111F00D18F88 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A806BF11B79111F00D18F88 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A806C051B7912B400D18F88 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A3E7AFC1B796BF40084CBF6 /* blns.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7A806BDA1B79111F00D18F88 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A806BE61B79111F00D18F88 /* ViewController.swift in Sources */,
+				7A806BE41B79111F00D18F88 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A806BEF1B79111F00D18F88 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A806BFA1B79111F00D18F88 /* NaughtyStringsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A806C031B7912B400D18F88 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A806C0C1B7912B400D18F88 /* KeyboardViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7A806BF51B79111F00D18F88 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7A806BDD1B79111F00D18F88 /* NaughtyStrings */;
+			targetProxy = 7A806BF41B79111F00D18F88 /* PBXContainerItemProxy */;
+		};
+		7A806C0E1B7912B400D18F88 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7A806C061B7912B400D18F88 /* NaughtyKeyboard */;
+			targetProxy = 7A806C0D1B7912B400D18F88 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		7A806BE71B79111F00D18F88 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7A806BE81B79111F00D18F88 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		7A806BEC1B79111F00D18F88 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7A806BED1B79111F00D18F88 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7A806BFB1B79111F00D18F88 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		7A806BFC1B79111F00D18F88 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7A806BFE1B79111F00D18F88 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = NaughtyStrings/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		7A806BFF1B79111F00D18F88 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = NaughtyStrings/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		7A806C011B79111F00D18F88 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = NaughtyStringsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NaughtyStrings.app/NaughtyStrings";
+			};
+			name = Debug;
+		};
+		7A806C021B79111F00D18F88 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = NaughtyStringsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NaughtyStrings.app/NaughtyStrings";
+			};
+			name = Release;
+		};
+		7A806C111B7912B500D18F88 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = NaughtyKeyboard/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		7A806C121B7912B500D18F88 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = NaughtyKeyboard/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7A806BD91B79111F00D18F88 /* Build configuration list for PBXProject "NaughtyStrings" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A806BFB1B79111F00D18F88 /* Debug */,
+				7A806BFC1B79111F00D18F88 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7A806BFD1B79111F00D18F88 /* Build configuration list for PBXNativeTarget "NaughtyStrings" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A806BFE1B79111F00D18F88 /* Debug */,
+				7A806BFF1B79111F00D18F88 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7A806C001B79111F00D18F88 /* Build configuration list for PBXNativeTarget "NaughtyStringsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A806C011B79111F00D18F88 /* Debug */,
+				7A806C021B79111F00D18F88 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7A806C101B7912B500D18F88 /* Build configuration list for PBXNativeTarget "NaughtyKeyboard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A806C111B7912B500D18F88 /* Debug */,
+				7A806C121B7912B500D18F88 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7A806BD61B79111F00D18F88 /* Project object */;
+}
