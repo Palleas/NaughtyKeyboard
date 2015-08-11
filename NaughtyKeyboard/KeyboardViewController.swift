@@ -10,13 +10,22 @@ import UIKit
 
 class KeyboardViewController: UIInputViewController {
 
-    @IBOutlet var nextKeyboardButton: UIButton!
-    let tableView = UITableView(frame: CGRectZero, style: .Grouped)
+    let tableView = UITableView(frame: CGRectZero, style: .Plain)
+    let nextKeyboardButton = UIButton.buttonWithType(.Custom) as! UIButton
     
     var strings: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        nextKeyboardButton.setTranslatesAutoresizingMaskIntoConstraints(false)
+        nextKeyboardButton.setTitle("Switch keyboard", forState: .Normal)
+        nextKeyboardButton.addTarget(self, action: Selector("didTapNextKeyboardButton"), forControlEvents: .TouchUpInside)
+        view.addSubview(nextKeyboardButton)
+        
+        let topButtonConstraint = NSLayoutConstraint(item: nextKeyboardButton, attribute: .Top, relatedBy: .Equal, toItem: view, attribute: .Top, multiplier: 1.0, constant: 0)
+        let leftButtonConstraint = NSLayoutConstraint(item: nextKeyboardButton, attribute: .Left, relatedBy: .Equal, toItem: view, attribute: .Left, multiplier: 1.0, constant: 0)
+        view.addConstraints([ leftButtonConstraint, topButtonConstraint])
 
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "StringCell")
         tableView.setTranslatesAutoresizingMaskIntoConstraints(false)
@@ -24,16 +33,19 @@ class KeyboardViewController: UIInputViewController {
         tableView.dataSource = self
         view.addSubview(tableView)
         
-        let topConstraint = NSLayoutConstraint(item: tableView, attribute: .Top, relatedBy: .Equal, toItem: view, attribute: .Top, multiplier: 1.0, constant: 0)
+        let topConstraint = NSLayoutConstraint(item: tableView, attribute: .Top, relatedBy: .Equal, toItem: nextKeyboardButton, attribute: .Bottom, multiplier: 1.0, constant: 0)
         let bottomConstraint = NSLayoutConstraint(item: tableView, attribute: .Bottom, relatedBy: .Equal, toItem: view, attribute: .Bottom, multiplier: 1.0, constant: 0)
         let leftConstraint = NSLayoutConstraint(item: tableView, attribute: .Left, relatedBy: .Equal, toItem: view, attribute: .Left, multiplier: 1.0, constant: 0)
         let rightConstraint = NSLayoutConstraint(item: tableView, attribute: .Right, relatedBy: .Equal, toItem: view, attribute: .Right, multiplier: 1.0, constant: 0)
         view.addConstraints([topConstraint, leftConstraint, bottomConstraint, rightConstraint])
-        
-        // TODO: move this in container app instead of loading it every time the keyboard is used 😁
+
         let path = NSBundle(forClass: self.dynamicType).pathForResource("blns", ofType: "json")!
         strings = NSJSONSerialization.JSONObjectWithData(NSData(contentsOfFile: path)!, options: NSJSONReadingOptions.allZeros, error: nil) as! [String]
         tableView.reloadData()
+    }
+    
+    func didTapNextKeyboardButton() {
+        advanceToNextInputMode()
     }
 }
 
