@@ -5,6 +5,7 @@ The Big List of Naughty Strings is a list of strings which have a high probabili
 [minimaxir](https://github.com/minimaxir) put together a [list of strings](https://github.com/minimaxir/big-list-of-naughty-strings) that can harm your application. I put together 
 a very simple iOS app that gives you access to a custom keyboard to use these strings to test your application.
 
+![](Screenshots/twitter-keyboard.gif)
 
 ## Instructions 
 
