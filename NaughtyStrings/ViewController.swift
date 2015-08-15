@@ -15,11 +15,15 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let path = NSBundle.mainBundle().pathForResource("explaination", ofType: "html")!
-        let data = NSData(contentsOfFile: path)!
-        let text = NSMutableAttributedString(data: data, options: [NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType], documentAttributes: nil, error: nil)!
-        text.setAttributes([NSFontAttributeName: UIFont.systemFontOfSize(20)], range: NSMakeRange(0, text.length))
-        descriptionContainer.attributedText = text
+        if let path = NSBundle.mainBundle().pathForResource("explaination", ofType: "html"){
+             let data = NSData(contentsOfFile: path)!
+            let text = NSMutableAttributedString(data: data, options: [NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType], documentAttributes: nil, error: nil)!
+            text.setAttributes([NSFontAttributeName: UIFont.systemFontOfSize(20)], range: NSMakeRange(0, text.length))
+            descriptionContainer.attributedText = text
+
+        }
+       
+       
     }
 
 }
