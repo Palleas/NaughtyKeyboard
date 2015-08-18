@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1111E6031B83DB810056A8F8 /* explaination.html in Resources */ = {isa = PBXBuildFile; fileRef = 1111E6021B83DB810056A8F8 /* explaination.html */; };
 		7A3E7AFC1B796BF40084CBF6 /* blns.json in Resources */ = {isa = PBXBuildFile; fileRef = 7A3E7AFB1B796BF40084CBF6 /* blns.json */; };
-		7A3E7B061B7A65C30084CBF6 /* explaination.html in Resources */ = {isa = PBXBuildFile; fileRef = 7A3E7B051B7A65C20084CBF6 /* explaination.html */; };
 		7A806BE41B79111F00D18F88 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A806BE31B79111F00D18F88 /* AppDelegate.swift */; };
 		7A806BE61B79111F00D18F88 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A806BE51B79111F00D18F88 /* ViewController.swift */; };
 		7A806BE91B79111F00D18F88 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A806BE71B79111F00D18F88 /* Main.storyboard */; };
@@ -51,8 +51,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1111E6021B83DB810056A8F8 /* explaination.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = explaination.html; sourceTree = "<group>"; };
 		7A3E7AFB1B796BF40084CBF6 /* blns.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = blns.json; sourceTree = "<group>"; };
-		7A3E7B051B7A65C20084CBF6 /* explaination.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = explaination.html; sourceTree = "<group>"; };
 		7A806BDE1B79111F00D18F88 /* NaughtyStrings.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NaughtyStrings.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A806BE21B79111F00D18F88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A806BE31B79111F00D18F88 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -93,6 +93,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1111E5FB1B83D6C50056A8F8 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				7A806BE71B79111F00D18F88 /* Main.storyboard */,
+				7A806BEC1B79111F00D18F88 /* LaunchScreen.xib */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		1111E5FC1B83D6CB0056A8F8 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				7A806BE51B79111F00D18F88 /* ViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		7A806BD51B79111F00D18F88 = {
 			isa = PBXGroup;
 			children = (
@@ -117,12 +134,10 @@
 			isa = PBXGroup;
 			children = (
 				7A806BE31B79111F00D18F88 /* AppDelegate.swift */,
-				7A806BE51B79111F00D18F88 /* ViewController.swift */,
-				7A806BE71B79111F00D18F88 /* Main.storyboard */,
+				1111E5FC1B83D6CB0056A8F8 /* ViewControllers */,
+				1111E5FB1B83D6C50056A8F8 /* UI */,
 				7A806BEA1B79111F00D18F88 /* Images.xcassets */,
-				7A806BEC1B79111F00D18F88 /* LaunchScreen.xib */,
 				7A806BE11B79111F00D18F88 /* Supporting Files */,
-				7A3E7B051B7A65C20084CBF6 /* explaination.html */,
 			);
 			path = NaughtyStrings;
 			sourceTree = "<group>";
@@ -130,9 +145,10 @@
 		7A806BE11B79111F00D18F88 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				1111E6021B83DB810056A8F8 /* explaination.html */,
 				7A806BE21B79111F00D18F88 /* Info.plist */,
 			);
-			name = "Supporting Files";
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		7A806BF61B79111F00D18F88 /* NaughtyStringsTests */ = {
@@ -149,7 +165,7 @@
 			children = (
 				7A806BF81B79111F00D18F88 /* Info.plist */,
 			);
-			name = "Supporting Files";
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		7A806C081B7912B400D18F88 /* NaughtyKeyboard */ = {
@@ -167,7 +183,7 @@
 			children = (
 				7A806C0A1B7912B400D18F88 /* Info.plist */,
 			);
-			name = "Supporting Files";
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,7 +249,9 @@
 		7A806BD61B79111F00D18F88 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0640;
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Perfectly-Cooked";
 				TargetAttributes = {
 					7A806BDD1B79111F00D18F88 = {
@@ -273,8 +291,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1111E6031B83DB810056A8F8 /* explaination.html in Resources */,
 				7A806BE91B79111F00D18F88 /* Main.storyboard in Resources */,
-				7A3E7B061B7A65C30084CBF6 /* explaination.html in Resources */,
 				7A806BEE1B79111F00D18F88 /* LaunchScreen.xib in Resources */,
 				7A806BEB1B79111F00D18F88 /* Images.xcassets in Resources */,
 			);
@@ -345,6 +363,7 @@
 				7A806BE81B79111F00D18F88 /* Base */,
 			);
 			name = Main.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 		7A806BEC1B79111F00D18F88 /* LaunchScreen.xib */ = {
@@ -353,6 +372,7 @@
 				7A806BED1B79111F00D18F88 /* Base */,
 			);
 			name = LaunchScreen.xib;
+			path = .;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -379,6 +399,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -443,8 +464,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = NaughtyStrings/Info.plist;
+				INFOPLIST_FILE = "NaughtyStrings/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.perfectly-cooked.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -453,8 +475,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = NaughtyStrings/Info.plist;
+				INFOPLIST_FILE = "NaughtyStrings/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.perfectly-cooked.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -471,8 +494,9 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = NaughtyStringsTests/Info.plist;
+				INFOPLIST_FILE = "NaughtyStringsTests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.perfectly-cooked.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NaughtyStrings.app/NaughtyStrings";
 			};
@@ -486,8 +510,9 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = NaughtyStringsTests/Info.plist;
+				INFOPLIST_FILE = "NaughtyStringsTests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.perfectly-cooked.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NaughtyStrings.app/NaughtyStrings";
 			};
@@ -500,8 +525,9 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = NaughtyKeyboard/Info.plist;
+				INFOPLIST_FILE = "NaughtyKeyboard/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.perfectly-cooked.NaughtyStrings.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -510,8 +536,9 @@
 		7A806C121B7912B500D18F88 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = NaughtyKeyboard/Info.plist;
+				INFOPLIST_FILE = "NaughtyKeyboard/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.perfectly-cooked.NaughtyStrings.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};

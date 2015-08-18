@@ -11,14 +11,14 @@ import UIKit
 class KeyboardViewController: UIInputViewController {
 
     let tableView = UITableView(frame: CGRectZero, style: .Plain)
-    let nextKeyboardButton = UIButton.buttonWithType(.Custom) as! UIButton
+    let nextKeyboardButton = UIButton(type: .Custom)
     
     var strings: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        nextKeyboardButton.setTranslatesAutoresizingMaskIntoConstraints(false)
+        nextKeyboardButton.translatesAutoresizingMaskIntoConstraints = false
         nextKeyboardButton.setTitle("Switch keyboard", forState: .Normal)
         nextKeyboardButton.addTarget(self, action: Selector("didTapNextKeyboardButton"), forControlEvents: .TouchUpInside)
         view.addSubview(nextKeyboardButton)
@@ -28,7 +28,7 @@ class KeyboardViewController: UIInputViewController {
         view.addConstraints([ leftButtonConstraint, topButtonConstraint])
 
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "StringCell")
-        tableView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.delegate = self
         tableView.dataSource = self
         view.addSubview(tableView)
@@ -39,8 +39,9 @@ class KeyboardViewController: UIInputViewController {
         let rightConstraint = NSLayoutConstraint(item: tableView, attribute: .Right, relatedBy: .Equal, toItem: view, attribute: .Right, multiplier: 1.0, constant: 0)
         view.addConstraints([topConstraint, leftConstraint, bottomConstraint, rightConstraint])
 
+        // TODO: Load from the shared container
         let path = NSBundle(forClass: self.dynamicType).pathForResource("blns", ofType: "json")!
-        strings = NSJSONSerialization.JSONObjectWithData(NSData(contentsOfFile: path)!, options: NSJSONReadingOptions.allZeros, error: nil) as! [String]
+        strings = try! NSJSONSerialization.JSONObjectWithData(NSData(contentsOfFile: path)!, options: NSJSONReadingOptions()) as! [String]
         tableView.reloadData()
     }
     
@@ -52,15 +53,13 @@ class KeyboardViewController: UIInputViewController {
 extension KeyboardViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let string = strings[indexPath.row]
-        if let proxy  = textDocumentProxy as? UIKeyInput {
-            proxy.insertText(string)
-            proxy.insertText("\n")
-        }
+        textDocumentProxy.insertText(string)
+        textDocumentProxy.insertText("\n")
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("StringCell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("StringCell", forIndexPath: indexPath) 
         cell.textLabel?.text = strings[indexPath.row]
         
         return cell
