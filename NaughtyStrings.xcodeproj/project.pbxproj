@@ -413,7 +413,6 @@
 					};
 					7A806BDD1B79111F00D18F88 = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = KHKS96K6FJ;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -426,7 +425,6 @@
 					};
 					7A806C061B7912B400D18F88 = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = KHKS96K6FJ;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -647,7 +645,7 @@
 				INFOPLIST_FILE = NaughtyStringsProxyTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = es.estebantorr.NaughtyStringsProxyTests;
+				PRODUCT_BUNDLE_IDENTIFIER = "${NAUGHTYSTRINGS_BUNDLE_PREFIX}.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NaughtyStrings.app/NaughtyStrings";
 			};
@@ -659,7 +657,7 @@
 				INFOPLIST_FILE = NaughtyStringsProxyTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = es.estebantorr.NaughtyStringsProxyTests;
+				PRODUCT_BUNDLE_IDENTIFIER = "${NAUGHTYSTRINGS_BUNDLE_PREFIX}.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NaughtyStrings.app/NaughtyStrings";
 			};
@@ -704,7 +702,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MTL_ENABLE_DEBUG_INFO = YES;
-				NAUGHTYSTRINGS_BUNDLE_PREFIX = es.estebantorr.NaughtyStrings;
+				NAUGHTYSTRINGS_BUNDLE_PREFIX = "com.perfectly-cooked.NaughtyStrings";
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -743,7 +741,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				NAUGHTYSTRINGS_BUNDLE_PREFIX = es.estebantorr.NaughtyStrings;
+				NAUGHTYSTRINGS_BUNDLE_PREFIX = "com.perfectly-cooked.NaughtyStrings";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};

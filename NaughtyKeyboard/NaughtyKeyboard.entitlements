@@ -4,7 +4,7 @@
 <dict>
 	<key>com.apple.security.application-groups</key>
 	<array>
-		<string>group.es.estebantorr.NaughtyStrings.Data</string>
+		<string>group.com.perfectly-cooked.NaughtyStrings.Data</string>
 	</array>
 </dict>
 </plist>
