@@ -6,13 +6,18 @@
 //  Copyright (c) 2015 Perfectly-Cooked. All rights reserved.
 //
 
+// Native Frameworks
 import UIKit
+
+// Shared Proxy
+import NaughtyStringsProxy
 
 class KeyboardViewController: UIInputViewController {
 
     let tableView = UITableView(frame: CGRectZero, style: .Plain)
     let nextKeyboardButton = UIButton(type: .Custom)
-    
+    let appConfiguration = AppGroupConfiguration()
+  
     var strings: [String] = []
     
     override func viewDidLoad() {
@@ -39,14 +44,39 @@ class KeyboardViewController: UIInputViewController {
         let rightConstraint = NSLayoutConstraint(item: tableView, attribute: .Right, relatedBy: .Equal, toItem: view, attribute: .Right, multiplier: 1.0, constant: 0)
         view.addConstraints([topConstraint, leftConstraint, bottomConstraint, rightConstraint])
 
-        // TODO: Load from the shared container
-        let path = NSBundle(forClass: self.dynamicType).pathForResource("blns", ofType: "json")!
-        strings = try! NSJSONSerialization.JSONObjectWithData(NSData(contentsOfFile: path)!, options: NSJSONReadingOptions()) as! [String]
+        strings = self.loadStrings()
         tableView.reloadData()
     }
     
     func didTapNextKeyboardButton() {
         advanceToNextInputMode()
+    }
+  
+    // MARK: - Internal Helpers
+    /**
+    Loads the list of «Naughty Strings».
+    Depending on wether or not there's a synced file it returns it or the bundled one.
+    
+    :returns: The list of naughty strings to be used by the keyboard.
+  
+    @author: @esttorhe
+    */
+    internal func loadStrings() -> [String] {
+      /**
+      First check if we have already synced from the remote location.
+      If not load the embedded file; else load the remotely fetched one.
+      */
+      let path : String
+      if let _ = self.appConfiguration.userDefaults.objectForKey("etag") {
+        path = (self.appConfiguration.appGroupURL?.URLByAppendingPathComponent("blns").URLByAppendingPathExtension("json").path)!
+      } else {
+        path = NSBundle(forClass: self.dynamicType).pathForResource("blns", ofType: "json")!
+      }
+      
+      // TODO: Is it worth to do error handling on a keyboard extension?
+      strings = try! NSJSONSerialization.JSONObjectWithData(NSData(contentsOfFile: path)!, options: NSJSONReadingOptions()) as! [String]
+      
+      return strings
     }
 }
 

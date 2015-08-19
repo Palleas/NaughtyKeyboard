@@ -9,13 +9,21 @@
 // Native Frameworks
 import UIKit
 
+// Shared Proxy
+import NaughtyStringsProxy
+
 class ViewController: UIViewController {
 
     // MARK: Properties
   
     @IBOutlet weak var descriptionContainer: UITextView!
     @IBOutlet weak var lastSyncedLabel: UILabel!
+  
+    /// Source URL of the «Big List Naughty of Naughty Strings» on Github
     internal let stringsURL = "https://raw.githubusercontent.com/minimaxir/big-list-of-naughty-strings/master/blns.json"
+  
+    /// The AppGroup configuration object
+    let appConfiguration = AppGroupConfiguration()
   
     // MARK: Life cycle
     override func viewDidLoad() {
@@ -27,7 +35,7 @@ class ViewController: UIViewController {
         text.setAttributes([NSFontAttributeName: UIFont.systemFontOfSize(20)], range: NSMakeRange(0, text.length))
         descriptionContainer.attributedText = text
       
-        if let lstUpdate = NSUserDefaults.standardUserDefaults().objectForKey("lastUpdate") as? NSDate {
+        if let lstUpdate = self.appConfiguration.userDefaults.objectForKey("lastUpdate") as? NSDate {
           self.lastSyncedLabel.text = "Last updated: \(lstUpdate)"
         }
     }
@@ -65,11 +73,13 @@ class ViewController: UIViewController {
     Checks if there's a new version of the Naughty Strings List.
   
     :param: completionHandler Closure callback notifying the result of the operation.
+  
+    @author: @esttorhe
     */
     internal func checkNewVersionAvailable(completionHandler: (result: Bool) -> ()) -> () {
       // First check if there's a previous etag saved.
       // If there isn't 1 we can safely assume this is first launch and we need to check.
-      let ud = NSUserDefaults.standardUserDefaults()
+      let ud = self.appConfiguration.userDefaults
       guard let lastETag = ud.stringForKey("etag") else {
         completionHandler(result: true)
         
@@ -94,9 +104,11 @@ class ViewController: UIViewController {
     Downloads the latest version of the Naughty Strings List and saves it to disk
     
     :param: completionHandler Closure callback notifying the result of the operation.
+  
+    @author: @esttorhe
     */
     internal func retrieveStrings(completionHandler:(result: Bool) -> ()) -> () {
-      let ud = NSUserDefaults.standardUserDefaults()
+      let ud = self.appConfiguration.userDefaults
       
       // Request the actual file now that we know there's a newer version
       let naughtyStringsURL = NSURL(string: self.stringsURL)!
@@ -104,11 +116,13 @@ class ViewController: UIViewController {
       request.HTTPMethod = "GET"
       
       let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { (data, resp, error) in
+        var flag = false
+        
         // Convert the received data and check that everything came back correctly.
-        guard let strings = NSString(data: data!, encoding: NSUTF8StringEncoding) as? String,
+        guard let strings = NSString(data: data!, encoding: NSUTF8StringEncoding),
           let response = resp as? NSHTTPURLResponse,
           let eTag = response.allHeaderFields["Etag"] as? String else {
-            completionHandler(result: false)
+            completionHandler(result: flag)
               
             return
         }
@@ -118,9 +132,18 @@ class ViewController: UIViewController {
         ud.setObject(NSDate(), forKey: "lastUpdate")
         ud.synchronize()
         
-        // TODO: Save the retrieved file to the shared container
+        /// Reads the prefix from the running bundle.
+        if let groupURL = self.appConfiguration.appGroupURL {
+          do {
+            try strings.writeToURL(groupURL.URLByAppendingPathComponent("blns").URLByAppendingPathExtension("json"), atomically: true, encoding: NSUTF8StringEncoding)
+            flag = true
+          } catch {
+            // TODO: Do better error handling
+            print(error)
+          }
+        }
         
-        completionHandler(result: true)
+        completionHandler(result: flag)
       }
       task.resume()
     }
