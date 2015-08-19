@@ -110,6 +110,7 @@
 		1111E6271B83F1E90056A8F8 /* AppGroupConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppGroupConfiguration.swift; sourceTree = "<group>"; };
 		1111E62A1B84018F0056A8F8 /* NaughtyStrings.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = NaughtyStrings.entitlements; sourceTree = "<group>"; };
 		1111E62B1B8401C90056A8F8 /* NaughtyKeyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = NaughtyKeyboard.entitlements; sourceTree = "<group>"; };
+		11A02A951B84EC5B009AAED4 /* AppGroup.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = AppGroup.xcconfig; sourceTree = "<group>"; };
 		7A3E7AFB1B796BF40084CBF6 /* blns.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = blns.json; sourceTree = "<group>"; };
 		7A806BDE1B79111F00D18F88 /* NaughtyStrings.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NaughtyStrings.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A806BE21B79111F00D18F88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -190,6 +191,7 @@
 				1111E60B1B83EFFF0056A8F8 /* NaughtyStringsProxy.h */,
 				1111E60D1B83EFFF0056A8F8 /* Info.plist */,
 				1111E6271B83F1E90056A8F8 /* AppGroupConfiguration.swift */,
+				11A02A951B84EC5B009AAED4 /* AppGroup.xcconfig */,
 			);
 			path = NaughtyStringsProxy;
 			sourceTree = "<group>";
@@ -594,6 +596,7 @@
 /* Begin XCBuildConfiguration section */
 		1111E6211B83EFFF0056A8F8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 11A02A951B84EC5B009AAED4 /* AppGroup.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -618,6 +621,7 @@
 		};
 		1111E6221B83EFFF0056A8F8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 11A02A951B84EC5B009AAED4 /* AppGroup.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -702,7 +706,6 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MTL_ENABLE_DEBUG_INFO = YES;
-				NAUGHTYSTRINGS_BUNDLE_PREFIX = "com.perfectly-cooked.NaughtyStrings";
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -741,7 +744,6 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				NAUGHTYSTRINGS_BUNDLE_PREFIX = "com.perfectly-cooked.NaughtyStrings";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -749,6 +751,7 @@
 		};
 		7A806BFE1B79111F00D18F88 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 11A02A951B84EC5B009AAED4 /* AppGroup.xcconfig */;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -766,6 +769,7 @@
 		};
 		7A806BFF1B79111F00D18F88 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 11A02A951B84EC5B009AAED4 /* AppGroup.xcconfig */;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -819,6 +823,7 @@
 		};
 		7A806C111B7912B500D18F88 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 11A02A951B84EC5B009AAED4 /* AppGroup.xcconfig */;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = NO;
 				CODE_SIGN_ENTITLEMENTS = NaughtyKeyboard/NaughtyKeyboard.entitlements;
@@ -839,6 +844,7 @@
 		};
 		7A806C121B7912B500D18F88 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 11A02A951B84EC5B009AAED4 /* AppGroup.xcconfig */;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = NO;
 				CODE_SIGN_ENTITLEMENTS = NaughtyKeyboard/NaughtyKeyboard.entitlements;

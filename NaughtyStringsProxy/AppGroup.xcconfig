@@ -1,0 +1,9 @@
+//
+//  AppGroup.xcconfig
+//  NaughtyStrings
+//
+//  Created by Esteban Torres on 19/8/15.
+//  Copyright © 2015 Perfectly-Cooked. All rights reserved.
+//
+
+NAUGHTYSTRINGS_BUNDLE_PREFIX = com.perfectly-cooked.NaughtyStrings
