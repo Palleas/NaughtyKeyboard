@@ -27,7 +27,7 @@ class KeyboardViewController: UIInputViewController {
     
     @author: @esttorhe
     */
-    internal var strings: [String] {
+    internal lazy var strings: [String] = {
         /**
         First check if we have already synced from the remote location.
         If not load the embedded file; else load the remotely fetched one.
@@ -43,7 +43,7 @@ class KeyboardViewController: UIInputViewController {
         let internalStrings = try! NSJSONSerialization.JSONObjectWithData(NSData(contentsOfFile: path)!, options: NSJSONReadingOptions()) as! [String]
         
         return internalStrings
-    }
+    }()
  
     // MARK: Life cycle
   

@@ -29,16 +29,16 @@ public class AppGroupConfiguration: NSObject {
     }
     
     /// The shared `UserDefauls`
-    public var sharedUserDefaults: NSUserDefaults {
+    public lazy var sharedUserDefaults: NSUserDefaults = {
         let myDefaults = NSUserDefaults(suiteName: AppConfiguration.ApplicationGroups.primary)
         
         return myDefaults!
-    }
+    }()
     
     /// `NSURL` pointing to the shared file space.
-    public var appGroupURL: NSURL? {
+    public lazy var appGroupURL: NSURL? = {
         let groupURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.\(AppConfiguration.Bundle.prefix).Data")
 
         return groupURL
-    }
+    }()
 }
