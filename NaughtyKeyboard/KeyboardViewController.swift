@@ -62,21 +62,21 @@ class KeyboardViewController: UIInputViewController {
     @author: @esttorhe
     */
     internal func loadStrings() -> [String] {
-      /**
-      First check if we have already synced from the remote location.
-      If not load the embedded file; else load the remotely fetched one.
-      */
-      let path : String
-      if let _ = self.appConfiguration.userDefaults.objectForKey("etag") {
-        path = (self.appConfiguration.appGroupURL?.URLByAppendingPathComponent("blns").URLByAppendingPathExtension("json").path)!
-      } else {
-        path = NSBundle(forClass: self.dynamicType).pathForResource("blns", ofType: "json")!
-      }
-      
-      // TODO: Is it worth to do error handling on a keyboard extension?
-      strings = try! NSJSONSerialization.JSONObjectWithData(NSData(contentsOfFile: path)!, options: NSJSONReadingOptions()) as! [String]
-      
-      return strings
+        /**
+        First check if we have already synced from the remote location.
+        If not load the embedded file; else load the remotely fetched one.
+        */
+        let path : String
+        if let _ = self.appConfiguration.sharedUserDefaults.objectForKey("etag") {
+            path = (self.appConfiguration.appGroupURL?.URLByAppendingPathComponent("blns").URLByAppendingPathExtension("json").path)!
+        } else {
+            path = NSBundle(forClass: self.dynamicType).pathForResource("blns", ofType: "json")!
+        }
+        
+        // TODO: Is it worth to do error handling on a keyboard extension?
+        strings = try! NSJSONSerialization.JSONObjectWithData(NSData(contentsOfFile: path)!, options: NSJSONReadingOptions()) as! [String]
+        
+        return strings
     }
 }
 

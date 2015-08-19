@@ -35,7 +35,7 @@
                                 <rect key="frame" x="225" y="477" width="149" height="30"/>
                                 <state key="normal" title="Sync Naughty Strings"/>
                                 <connections>
-                                    <action selector="sync_touched:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="67j-Dj-JyX"/>
+                                    <action selector="syncTouched:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="3yV-1S-gaQ"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last updated: Never" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4HH-dL-m2a">

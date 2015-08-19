@@ -13,6 +13,10 @@ import UIKit
 import NaughtyStringsProxy
 
 class ViewController: UIViewController {
+  
+    // MARK: Type Alias
+    /// Completion handler for asynchronous calls
+    typealias CompletionHandler = (succeeded: Bool, error: ErrorType?) -> ()
 
     // MARK: Properties
   
@@ -35,36 +39,36 @@ class ViewController: UIViewController {
         text.setAttributes([NSFontAttributeName: UIFont.systemFontOfSize(20)], range: NSMakeRange(0, text.length))
         descriptionContainer.attributedText = text
       
-        if let lstUpdate = self.appConfiguration.userDefaults.objectForKey("lastUpdate") as? NSDate {
-          self.lastSyncedLabel.text = "Last updated: \(lstUpdate)"
+        if let lastUpdate = self.appConfiguration.sharedUserDefaults.objectForKey("lastUpdate") as? NSDate {
+          self.lastSyncedLabel.text = "Last updated: \(lastUpdate)"
         }
     }
 
     // MARK: Events
   
-    @IBAction func sync_touched(sender: UIButton) {
-      sender.setTitle("Checking for new version…", forState: .Normal)
-      self.checkNewVersionAvailable { [unowned self, unowned sender]
-        result in
-        if result == true {
-          dispatch_async(dispatch_get_main_queue()) {
-            sender.setTitle("Downloading latest version", forState: .Normal)
-          }
-          
-          self.retrieveStrings { getResult in
-            dispatch_async(dispatch_get_main_queue()) {
-              if getResult == true {
-                self.lastSyncedLabel.text = "Last update: now"
-                sender.setTitle("Up to date", forState: .Normal)
-              }
+    @IBAction func syncTouched(sender: UIButton) {
+        sender.setTitle("Checking for new version…", forState: .Normal)
+        self.checkNewVersionAvailable { [unowned self, unowned sender]
+            (suceeded, error) in
+            if suceeded == true {
+                dispatch_async(dispatch_get_main_queue()) {
+                    sender.setTitle("Downloading latest version", forState: .Normal)
+                }
+                
+                self.retrieveStrings { (getResult, getResultError) in
+                    dispatch_async(dispatch_get_main_queue()) {
+                        if getResult == true {
+                            self.lastSyncedLabel.text = "Last update: now"
+                            sender.setTitle("Up to date", forState: .Normal)
+                        }
+                    }
+                }
+            } else {
+                dispatch_async(dispatch_get_main_queue()) {
+                    sender.setTitle("Up to date", forState: .Normal)
+                }
             }
-          }
-        } else {
-          dispatch_async(dispatch_get_main_queue()) {
-            sender.setTitle("Up to date", forState: .Normal)
-          }
         }
-      }
     }
   
     // MARK: - Internal helpers
@@ -76,28 +80,28 @@ class ViewController: UIViewController {
   
     @author: @esttorhe
     */
-    internal func checkNewVersionAvailable(completionHandler: (result: Bool) -> ()) -> () {
-      // First check if there's a previous etag saved.
-      // If there isn't 1 we can safely assume this is first launch and we need to check.
-      let ud = self.appConfiguration.userDefaults
-      guard let lastETag = ud.stringForKey("etag") else {
-        completionHandler(result: true)
+    internal func checkNewVersionAvailable(completionHandler: CompletionHandler) -> () {
+        // First check if there's a previous etag saved.
+        // If there isn't 1 we can safely assume this is first launch and we need to check.
+        let ud = self.appConfiguration.sharedUserDefaults
+        guard let lastETag = ud.stringForKey("etag") else {
+            completionHandler(succeeded: true, error: nil)
+          
+            return
+        }
         
-        return
-      }
-      
-      // Lets make a HEAD request to check for latest etag
-      let naughtyStringsURL = NSURL(string: self.stringsURL)!
-      let request = NSMutableURLRequest(URL: naughtyStringsURL, cachePolicy: .ReloadIgnoringLocalCacheData, timeoutInterval: 30.0)
-      request.HTTPMethod = "HEAD"
-      
-      let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {(data, resp, error) in
-        guard let response = resp as? NSHTTPURLResponse else { return }
-        guard let eTag = response.allHeaderFields["Etag"] as? String else { return }
+        // Lets make a HEAD request to check for latest etag
+        let naughtyStringsURL = NSURL(string: self.stringsURL)!
+        let request = NSMutableURLRequest(URL: naughtyStringsURL, cachePolicy: .ReloadIgnoringLocalCacheData, timeoutInterval: 30.0)
+        request.HTTPMethod = "HEAD"
         
-        completionHandler(result: eTag != lastETag)
-      }
-      task.resume()
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {(data, resp, error) in
+            guard let response = resp as? NSHTTPURLResponse else { return }
+            guard let eTag = response.allHeaderFields["Etag"] as? String else { return }
+            
+            completionHandler(succeeded: eTag != lastETag, error: nil)
+        }
+        task.resume()
     }
   
     /**
@@ -107,45 +111,43 @@ class ViewController: UIViewController {
   
     @author: @esttorhe
     */
-    internal func retrieveStrings(completionHandler:(result: Bool) -> ()) -> () {
-      let ud = self.appConfiguration.userDefaults
-      
-      // Request the actual file now that we know there's a newer version
-      let naughtyStringsURL = NSURL(string: self.stringsURL)!
-      let request = NSMutableURLRequest(URL: naughtyStringsURL, cachePolicy: .ReloadIgnoringLocalCacheData, timeoutInterval: 30.0)
-      request.HTTPMethod = "GET"
-      
-      let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { (data, resp, error) in
-        var flag = false
+    internal func retrieveStrings(completionHandler:CompletionHandler) -> () {
+        let ud = self.appConfiguration.sharedUserDefaults
         
-        // Convert the received data and check that everything came back correctly.
-        guard let strings = NSString(data: data!, encoding: NSUTF8StringEncoding),
-          let response = resp as? NSHTTPURLResponse,
-          let eTag = response.allHeaderFields["Etag"] as? String else {
-            completionHandler(result: flag)
-              
-            return
+        // Request the actual file now that we know there's a newer version
+        let naughtyStringsURL = NSURL(string: self.stringsURL)!
+        let request = NSMutableURLRequest(URL: naughtyStringsURL, cachePolicy: .ReloadIgnoringLocalCacheData, timeoutInterval: 30.0)
+        request.HTTPMethod = "GET"
+        
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { (data, resp, error) in
+            var flag = false
+            var err: ErrorType? = nil
+            
+            // Convert the received data and check that everything came back correctly.
+            guard let strings = NSString(data: data!, encoding: NSUTF8StringEncoding),
+                let response = resp as? NSHTTPURLResponse,
+                let eTag = response.allHeaderFields["Etag"] as? String else {
+                  completionHandler(succeeded: flag, error: err)
+                    
+                  return
+            }
+            
+            // Update our «tracking flags»
+            ud.setObject(eTag, forKey: "etag")
+            ud.setObject(NSDate(), forKey: "lastUpdate")
+            ud.synchronize()
+            
+            /// Reads the prefix from the running bundle.
+            if let groupURL = self.appConfiguration.appGroupURL {
+                do {
+                    try strings.writeToURL(groupURL.URLByAppendingPathComponent("blns").URLByAppendingPathExtension("json"), atomically: true, encoding: NSUTF8StringEncoding)
+                    flag = true
+                } catch { err = error }
+            }
+            
+            completionHandler(succeeded: flag, error: error)
         }
-        
-        // Update our «tracking flags»
-        ud.setObject(eTag, forKey: "etag")
-        ud.setObject(NSDate(), forKey: "lastUpdate")
-        ud.synchronize()
-        
-        /// Reads the prefix from the running bundle.
-        if let groupURL = self.appConfiguration.appGroupURL {
-          do {
-            try strings.writeToURL(groupURL.URLByAppendingPathComponent("blns").URLByAppendingPathExtension("json"), atomically: true, encoding: NSUTF8StringEncoding)
-            flag = true
-          } catch {
-            // TODO: Do better error handling
-            print(error)
-          }
-        }
-        
-        completionHandler(result: flag)
-      }
-      task.resume()
+        task.resume()
     }
 }
 
