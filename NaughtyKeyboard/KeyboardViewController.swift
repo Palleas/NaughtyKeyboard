@@ -6,19 +6,51 @@
 //  Copyright (c) 2015 Perfectly-Cooked. All rights reserved.
 //
 
+// Native Frameworks
 import UIKit
+
+// Shared Proxy
+import NaughtyStringsProxy
 
 class KeyboardViewController: UIInputViewController {
 
+    // MARK: Properties
     let tableView = UITableView(frame: CGRectZero, style: .Plain)
-    let nextKeyboardButton = UIButton.buttonWithType(.Custom) as! UIButton
+    let nextKeyboardButton = UIButton(type: .Custom)
+    let appConfiguration = AppGroupConfiguration()
+  
+    /**
+    Loads the list of «Naughty Strings».
+    Depending on wether or not there's a synced file it returns it or the bundled one.
     
-    var strings: [String] = []
+    :returns: The list of naughty strings to be used by the keyboard.
     
+    @author: @esttorhe
+    */
+    internal lazy var strings: [String] = {
+        /**
+        First check if we have already synced from the remote location.
+        If not load the embedded file; else load the remotely fetched one.
+        */
+        let path : String
+        if let _ = self.appConfiguration.sharedUserDefaults.objectForKey("etag") {
+            path = (self.appConfiguration.appGroupURL?.URLByAppendingPathComponent("blns").URLByAppendingPathExtension("json").path)!
+        } else {
+            path = NSBundle(forClass: self.dynamicType).pathForResource("blns", ofType: "json")!
+        }
+        
+        // TODO: Is it worth to do error handling on a keyboard extension?
+        let internalStrings = try! NSJSONSerialization.JSONObjectWithData(NSData(contentsOfFile: path)!, options: NSJSONReadingOptions()) as! [String]
+        
+        return internalStrings
+    }()
+ 
+    // MARK: Life cycle
+  
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        nextKeyboardButton.setTranslatesAutoresizingMaskIntoConstraints(false)
+      
+        nextKeyboardButton.translatesAutoresizingMaskIntoConstraints = false
         nextKeyboardButton.setTitle("Switch keyboard", forState: .Normal)
         nextKeyboardButton.addTarget(self, action: Selector("didTapNextKeyboardButton"), forControlEvents: .TouchUpInside)
         view.addSubview(nextKeyboardButton)
@@ -28,7 +60,7 @@ class KeyboardViewController: UIInputViewController {
         view.addConstraints([ leftButtonConstraint, topButtonConstraint])
 
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "StringCell")
-        tableView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.delegate = self
         tableView.dataSource = self
         view.addSubview(tableView)
@@ -39,8 +71,6 @@ class KeyboardViewController: UIInputViewController {
         let rightConstraint = NSLayoutConstraint(item: tableView, attribute: .Right, relatedBy: .Equal, toItem: view, attribute: .Right, multiplier: 1.0, constant: 0)
         view.addConstraints([topConstraint, leftConstraint, bottomConstraint, rightConstraint])
 
-        let path = NSBundle(forClass: self.dynamicType).pathForResource("blns", ofType: "json")!
-        strings = NSJSONSerialization.JSONObjectWithData(NSData(contentsOfFile: path)!, options: NSJSONReadingOptions.allZeros, error: nil) as! [String]
         tableView.reloadData()
     }
     
@@ -49,18 +79,18 @@ class KeyboardViewController: UIInputViewController {
     }
 }
 
+// MARK: -
+
 extension KeyboardViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let string = strings[indexPath.row]
-        if let proxy  = textDocumentProxy as? UIKeyInput {
-            proxy.insertText(string)
-            proxy.insertText("\n")
-        }
+        textDocumentProxy.insertText(string)
+        textDocumentProxy.insertText("\n")
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("StringCell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("StringCell", forIndexPath: indexPath) 
         cell.textLabel?.text = strings[indexPath.row]
         
         return cell
